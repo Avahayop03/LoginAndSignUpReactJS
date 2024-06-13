@@ -2,13 +2,25 @@ import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import Dashboard from "../Pages/Dashboard";
 import Main from "../Pages/Main";
-import Patient from "../Pages/Patient";
+import PatientMedication from "../Pages/PatientMedication";
+import StaffAllocation from "../Pages/StaffAllocation";
+import WardRequisition from "../Pages/WardRequisition";
+import StocksAndSupplies from "../Pages/StocksAndSupplies";
 import Wards from "../Pages/Wards";
-import Others from "../Pages/Others";
+import Patient from "../PatientsPages/Patient";
+import Appointment from "../Pages/Appointment";
+import OutPatient from "../PatientsPages/OutPatient";
+import WaitingLists from "../PatientsPages/WaitingLists";
+import CurrentInPatient from "../PatientsPages/CurrentInPatient";
 
 const routes = [
     {
         path: "/login",
+        element: <Login />
+
+    },
+    {
+        path: "/",
         element: <Login />
     },
     {
@@ -19,22 +31,62 @@ const routes = [
         path: "/dashboard",
         element: <Dashboard />,
         children: [
+            
             {
                 index: true,
                 element:<Main/>
             },
+            
             {
-                path: "patient",
-                element: <Patient/>
+                path: "patientMed",
+                element: <PatientMedication/>
+            },
+
+            {
+                path: "staffAlloc",
+                element: <StaffAllocation/>
+            },
+            {
+                path: "wardReq",
+                element: <WardRequisition/>
+            },
+            {
+                path: "stocksAndSupplies",
+                element: <StocksAndSupplies/>
             },
             {
                 path: "wards",
                 element: <Wards/>
             },
             {
-                path: "others",
-                element: <Others/>
+                path:"appointment",
+                element: <Appointment/>
+            },
+            
+            {
+                path:"patient",
+                element: <Patient/>,
+                children: [
+                    
+                    {
+                        path:"outPatient",
+                        element: <OutPatient/>
+                    },
+                    {
+                        path:"waitingLists",
+                        element: <WaitingLists/>
+                    },
+                    {
+                        path:"currentInPatient",
+                        element:<CurrentInPatient/>
+
+                    }
+                    
+                ]
             }
+            
+
+
         ]
     }
 ];

@@ -1,25 +1,11 @@
-import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import Button from '@mui/material/Button';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import {
+  AppBar as MuiAppBar, Box, Container, CssBaseline, Divider,
+  Drawer as MuiDrawer, Grid, IconButton, List, styled, ThemeProvider,
+  Toolbar, Typography, createTheme,} from '@mui/material';
+import { AccountCircle, ChevronLeft as ChevronLeftIcon,Menu as MenuIcon,} from '@mui/icons-material';
 import { Outlet } from 'react-router-dom';
-import { mainListItems, secondaryListItems } from '../Components/NavList';
+import MainListItems from '../Components/NavList'; 
 import Copyright from '../Components/Copyright';
 
 const drawerWidth = 240;
@@ -53,8 +39,8 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         duration: theme.transitions.duration.enteringScreen,
       }),
       boxSizing: 'border-box',
-      display: 'flex',  // Added line
-      flexDirection: 'column',  // Added line
+      display: 'flex',
+      flexDirection: 'column',
       ...(!open && {
         overflowX: 'hidden',
         transition: theme.transitions.create('width', {
@@ -70,20 +56,13 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-// TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function Dashboard() {
-  const [open, setOpen] = React.useState(true);
-  const navigate = useNavigate();
+  const [open, setOpen] = useState(true);
 
   const toggleDrawer = () => {
     setOpen(!open);
-  };
-
-  const handleLogout = () => {
-    // Perform any logout logic here, if necessary
-    navigate('/login'); // Navigate to the login page
   };
 
   return (
@@ -93,7 +72,7 @@ export default function Dashboard() {
         <AppBar position="absolute" open={open}>
           <Toolbar
             sx={{
-              pr: '24px', // keep right padding when drawer closed
+              pr: '24px',
             }}
           >
             <IconButton
@@ -118,12 +97,11 @@ export default function Dashboard() {
               Dashboard
             </Typography>
             <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
+              <AccountCircle />
             </IconButton>
           </Toolbar>
         </AppBar>
+
         <Drawer variant="permanent" open={open}>
           <Toolbar
             sx={{
@@ -137,25 +115,15 @@ export default function Dashboard() {
               <ChevronLeftIcon />
             </IconButton>
           </Toolbar>
+
           <Divider />
+          
           <List component="nav" sx={{ flexGrow: 1 }}>
-            {mainListItems}
+            <MainListItems /> {/* Correct way to render the component basta mao ning sa Navlist*/}
             <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
           </List>
-          <Button
-            color="inherit"
-            onClick={handleLogout}
-            sx={{
-              mt: 'auto',  
-              mb: 2,  
-              mx: 'auto',  
-              width: '90%',  
-            }}
-          >
-            Logout
-          </Button>
         </Drawer>
+
         <Box
           component="main"
           sx={{
@@ -169,12 +137,11 @@ export default function Dashboard() {
           }}
         >
           <Toolbar />
+          
           <Container maxWidth="false" sx={{ mt: 4, mb: 4 }}>
             <Grid container>
               <Grid item xs={12}>
-                <Paper sx={{ p: 4 }}>
-                  <Outlet />
-                </Paper>
+                <Outlet />
               </Grid>
             </Grid>
             <Copyright sx={{ pt: 4 }} />
