@@ -31,6 +31,7 @@ const AppBar = styled(MuiAppBar, {
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
+    
     '& .MuiDrawer-paper': {
       position: 'relative',
       whiteSpace: 'nowrap',
@@ -147,8 +148,7 @@ export default function Dashboard() {
             overflow: 'auto',
           }}
         >
-          <Toolbar />
-          
+          <Toolbar />  
           <Container maxWidth="false" sx={{ mt: 4, mb: 4 }}>
             <Grid container>
               <Grid item xs={12}>

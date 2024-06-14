@@ -1,9 +1,10 @@
+import React from 'react';
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import Dashboard from "../Pages/Dashboard";
 import Main from "../Pages/Main";
 import PatientMedication from "../Pages/PatientMedication";
-import StaffAllocation from "../Pages/StaffAllocation";
+import SavePageMed from '../Pages/SavePageMed';  // Assuming this is correct
 import WardRequisition from "../Pages/WardRequisition";
 import StocksAndSupplies from "../Pages/StocksAndSupplies";
 import Wards from "../Pages/Wards";
@@ -12,10 +13,14 @@ import Appointment from "../Pages/Appointment";
 import OutPatient from "../PatientsPages/OutPatient";
 import WaitingLists from "../PatientsPages/WaitingLists";
 import CurrentInPatient from "../PatientsPages/CurrentInPatient";
+<<<<<<< HEAD
 import PrivateRoute from '../Components/PrivateRoute';
 import PatientLists from "../PatientsPages/PatientLists";
 import DischargePatient from "../PatientsPages/DischargePatient";
 import MainInPatient from "../PatientsPages/MainInPatient";
+=======
+import StaffAllocation from "../Pages/StaffAllocation";
+>>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
 
 const routes = [
     {
@@ -40,11 +45,31 @@ const routes = [
             },
             {
                 path: "patientMed",
+<<<<<<< HEAD
                 element: <PatientMedication />
             },
             {
                 path: "staffAlloc",
                 element: <StaffAllocation />
+=======
+                element: <PatientMedication />,
+                children: [
+                    {
+                        path: "edit",
+                        element: <SavePageMed />  // Updated component name if this is the correct component
+                    }
+                ]
+            },
+            {
+                path: "staffAlloc",
+                element: <StaffAllocation />,
+                children: [
+                    {
+                        path: "edit",
+                        element: <SavePageMed />  // Updated component name if this is the correct component
+                    }
+                ]
+>>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
             },
             {
                 path: "wardReq",
@@ -62,12 +87,16 @@ const routes = [
                 path: "appointment",
                 element: <Appointment />
             },
+<<<<<<< HEAD
            
+=======
+>>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
             {
                 path: "patient",
                 element: <Patient />,
                 children: [
                     {
+<<<<<<< HEAD
                         index:true,
                         element:<PatientLists/>
                     },
@@ -97,6 +126,18 @@ const routes = [
                                 element:<DischargePatient/>
                             }
                         ]
+=======
+                        path: "outPatient",
+                        element: <OutPatient />
+                    },
+                    {
+                        path: "waitingLists",
+                        element: <WaitingLists />
+                    },
+                    {
+                        path: "currentInPatient",
+                        element: <CurrentInPatient />
+>>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
                     }
                 ]
             }
