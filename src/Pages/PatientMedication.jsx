@@ -1,7 +1,9 @@
-// PatientMedication.jsx
 import React from 'react';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
+import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 
 export default function PatientMedication() {
@@ -9,6 +11,13 @@ export default function PatientMedication() {
 
   const handleEditClick = () => {
     navigate('/dashboard/patientMed/edit');
+  };
+
+  const handleSearch = (event) => {
+    // Implement search functionality here
+    const searchQuery = event.target.value;
+    console.log('Searching for:', searchQuery);
+    // You can perform further actions based on the searchQuery
   };
 
   return (
@@ -43,18 +52,22 @@ export default function PatientMedication() {
       >
         <div style={{ marginBottom: '16px', width: '100%', display: 'flex', alignItems: 'center', position: 'relative' }}>
           <h2 style={{ margin: 0, marginRight: 'auto' }}>Patient Medication</h2>
-          <Button
-            variant="contained"
-            sx={{ 
-              marginLeft: 'auto',
-              backgroundColor: 'green',
-              '&:hover': {
-                backgroundColor: 'darkgreen'
-              }
+          <TextField
+            variant="outlined"
+            placeholder="Search"
+            sx={{ borderRadius: 1, ml: 'auto' }} // Move to the right
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+              sx: {
+                ml: 2, borderRadius: 2, // Adding borderRadius
+              },
             }}
-          >
-            Search
-          </Button>
+            onChange={handleSearch}
+          />
           <div 
             style={{ 
               position: 'absolute', 
