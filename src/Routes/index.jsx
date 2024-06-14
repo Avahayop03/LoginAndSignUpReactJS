@@ -1,9 +1,10 @@
+import React from 'react';
 import Login from "../Pages/Login";
 import SignUp from "../Pages/SignUp";
 import Dashboard from "../Pages/Dashboard";
 import Main from "../Pages/Main";
 import PatientMedication from "../Pages/PatientMedication";
-import StaffAllocation from "../Pages/StaffAllocation";
+import SavePageMed from '../Pages/SavePageMed';  // Assuming this is correct
 import WardRequisition from "../Pages/WardRequisition";
 import StocksAndSupplies from "../Pages/StocksAndSupplies";
 import Wards from "../Pages/Wards";
@@ -12,12 +13,12 @@ import Appointment from "../Pages/Appointment";
 import OutPatient from "../PatientsPages/OutPatient";
 import WaitingLists from "../PatientsPages/WaitingLists";
 import CurrentInPatient from "../PatientsPages/CurrentInPatient";
+import StaffAllocation from "../Pages/StaffAllocation";
 
 const routes = [
     {
         path: "/login",
         element: <Login />
-
     },
     {
         path: "/",
@@ -31,65 +32,66 @@ const routes = [
         path: "/dashboard",
         element: <Dashboard />,
         children: [
-            
             {
                 index: true,
-                element:<Main/>
+                element: <Main />
             },
-            
             {
                 path: "patientMed",
-                element: <PatientMedication/>
+                element: <PatientMedication />,
+                children: [
+                    {
+                        path: "edit",
+                        element: <SavePageMed />  // Updated component name if this is the correct component
+                    }
+                ]
             },
-
             {
                 path: "staffAlloc",
-                element: <StaffAllocation/>
+                element: <StaffAllocation />,
+                children: [
+                    {
+                        path: "edit",
+                        element: <SavePageMed />  // Updated component name if this is the correct component
+                    }
+                ]
             },
             {
                 path: "wardReq",
-                element: <WardRequisition/>
+                element: <WardRequisition />
             },
             {
                 path: "stocksAndSupplies",
-                element: <StocksAndSupplies/>
+                element: <StocksAndSupplies />
             },
             {
                 path: "wards",
-                element: <Wards/>
+                element: <Wards />
             },
             {
-                path:"appointment",
-                element: <Appointment/>
+                path: "appointment",
+                element: <Appointment />
             },
-            
             {
-                path:"patient",
-                element: <Patient/>,
+                path: "patient",
+                element: <Patient />,
                 children: [
-                    
                     {
-                        path:"outPatient",
-                        element: <OutPatient/>
+                        path: "outPatient",
+                        element: <OutPatient />
                     },
                     {
-                        path:"waitingLists",
-                        element: <WaitingLists/>
+                        path: "waitingLists",
+                        element: <WaitingLists />
                     },
                     {
-                        path:"currentInPatient",
-                        element:<CurrentInPatient/>
-
+                        path: "currentInPatient",
+                        element: <CurrentInPatient />
                     }
-                    
                 ]
             }
-            
-
-
         ]
     }
 ];
-
 
 export default routes;
