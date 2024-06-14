@@ -1,44 +1,49 @@
 import { useState } from 'react';
-import { Container, Box, TextField, Button, Typography, Checkbox } from '@mui/material';
+import { Container, Box, TextField, Button, Typography, IconButton, InputAdornment, Snackbar, Alert } from '@mui/material';
 import { useNavigate, Link } from 'react-router-dom';
+import { Visibility, VisibilityOff } from '@mui/icons-material';
 import supabase from '../Services/Supabase';
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isError, setIsError] = useState(false); 
+    const [showPassword, setShowPassword] = useState(false);
+    const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('something went wrong');
     const navigate = useNavigate();
-    const [errorMessage, setErrorMessage] = useState("something went wrong");
-  
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+    const handleMouseDownPassword = (event) => event.preventDefault();
+
     const login = async () => {
-      let { data, error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
-    
-      if (error) {
-        setIsError(true);
-        setErrorMessage(error.message);
-      } else if (data) {
-        if (data.user) {
-          navigate("/dashboard");
-        } else {
-          setIsError(true);
-          setErrorMessage("Invalid email or password");
+        let { data, error } = await supabase.auth.signInWithPassword({
+            email: email,
+            password: password
+        });
+
+        if (error) {
+            setIsError(true);
+            setErrorMessage(error.message);
+        } else if (data) {
+            if (data.user) {
+                navigate('/dashboard');
+            } else {
+                setIsError(true);
+                setErrorMessage('Invalid email or password');
+            }
         }
-      }
+    };
+
+    const handleCloseSnackbar = () => {
+        setIsError(false);
     };
 
     return (
         <Container maxWidth="xs" className="formContainer">
-            <Box component="form" noValidate autoComplete="off" >
-                <Typography variant="h4" component="h1" gutterBottom>Login Form</Typography>
-                {
-                    isError && 
-                    <Box>
-                        <Typography color="error" align="center">{errorMessage}</Typography>
-                    </Box>
-                }
+            <Box component="form" noValidate autoComplete="off">
+                <Typography variant="h5" component="h1" gutterBottom>
+                    Login Form
+                </Typography>
                 <TextField
                     fullWidth
                     margin="normal"
@@ -46,34 +51,46 @@ export default function Login() {
                     label="Email"
                     variant="outlined"
                     onChange={(e) => setEmail(e.target.value)}
+                    InputProps={{ style: { fontSize: 14 } }} // Adjust the font size of the input
+                    InputLabelProps={{ style: { fontSize: 14 } }} // Adjust the font size of the label
                 />
                 <TextField
                     fullWidth
                     margin="normal"
-                    required 
+                    required
                     label="Password"
-                    type="password"
+                    type={showPassword ? 'text' : 'password'}
                     variant="outlined"
                     onChange={(e) => setPassword(e.target.value)}
+                    InputProps={{
+                        style: { fontSize: 14 }, // Adjust the font size of the input
+                        endAdornment: (
+                            <InputAdornment position="end">
+                                <IconButton
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                >
+                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                </IconButton>
+                            </InputAdornment>
+                        ),
+                    }}
+                    InputLabelProps={{ style: { fontSize: 14 } }} // Adjust the font size of the label
                 />
-                <Box display="flex" justifyContent="space-between" alignItems="center" marginTop={2}>
-                    <Box display="flex" alignItems="center">
-                        <Checkbox />
-                        <Typography>Remember Me</Typography>
-                    </Box>
-                    <Link href="#" underline="none">Forgot Password?</Link>
-                </Box>
                 <Button
                     fullWidth
                     variant="contained"
                     color="primary"
-                    onClick = {login}
-                
-                    
+                    onClick={login}
                     sx={{
+                        mt: 2,
                         mb: 2,
-                        backgroundColor: '#eb3d94',
-                        '&:hover': { backgroundColor: '#f04fc8' },
+                        height: 50, // increase the height
+                        fontSize: 'h6', // increase the font size
+                        backgroundColor: '#0288d1',
+                        '&:hover': { backgroundColor: '#01579b' },
                     }}
                 >
                     Login
@@ -83,6 +100,11 @@ export default function Login() {
                     <Link to="/SignUp" underline="none">Register</Link>
                 </Typography>
             </Box>
+            <Snackbar  open={isError} autoHideDuration={6000} onClose={handleCloseSnackbar}>
+                <Alert onClose={handleCloseSnackbar} severity="error" sx={{ width: '100%'}}>
+                    {errorMessage}
+                </Alert>
+            </Snackbar>
         </Container>
     );
 }
