@@ -9,6 +9,8 @@ import FeedIcon from '@mui/icons-material/Feed';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogoutOutlined } from '@mui/icons-material';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+
 
 export default function MainListItems() {
   const navigate = useNavigate();
@@ -64,6 +66,15 @@ export default function MainListItems() {
             <InventoryIcon />
           </ListItemIcon>
           <ListItemText primary="Stocks and Supplies" />
+        </ListItemButton>
+      </Link>
+
+      <Link to="/dashboard/local-doctor" style={{ textDecoration: 'none' }}>
+        <ListItemButton>
+          <ListItemIcon>
+            <LocalHospitalIcon /> {/* Use LocalHospitalIcon as the icon */}
+          </ListItemIcon>
+          <ListItemText primary="Local Doctors" />
         </ListItemButton>
       </Link>
 

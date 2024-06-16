@@ -72,8 +72,8 @@ export default function Login() {
                     
                     sx={{
                         mb: 2,
-                        backgroundColor: '#eb3d94',
-                        '&:hover': { backgroundColor: '#f04fc8' },
+                        backgroundColor: '#blue',
+                        '&:hover': { backgroundColor: 'darkblue' },
                     }}
                 >
                     Login

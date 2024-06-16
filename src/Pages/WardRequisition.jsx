@@ -6,10 +6,12 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import { useNavigate } from 'react-router-dom';
 
+
 export default function WardRequisition() {
   const navigate = useNavigate();
 
   const handleAddClick = () => {
+    console.log('Add button clicked');
     navigate('/dashboard/wardReq/add');
   };
 
@@ -34,7 +36,7 @@ export default function WardRequisition() {
             backgroundColor: 'darkgreen'
           }
         }}
-        onClick={handleAddClick}
+        onClick={handleAddClick} // Added onClick handler
       >
         Add
       </Button>

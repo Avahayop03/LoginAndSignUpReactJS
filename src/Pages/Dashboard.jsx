@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import {
   AppBar as MuiAppBar, Box, Container, CssBaseline, Divider,
   Drawer as MuiDrawer, Grid, IconButton, List, styled, ThemeProvider,
-  Toolbar, Typography, createTheme,} from '@mui/material';
-import { AccountCircle, ChevronLeft as ChevronLeftIcon,Menu as MenuIcon,} from '@mui/icons-material';
+  Toolbar, Typography, createTheme
+} from '@mui/material';
+import { AccountCircle, ChevronLeft as ChevronLeftIcon, Menu as MenuIcon, Brightness4, Brightness7 } from '@mui/icons-material';
 import { Outlet } from 'react-router-dom';
-import MainListItems from '../Components/NavList'; 
+import MainListItems from '../Components/NavList';
 import Copyright from '../Components/Copyright';
 
 const drawerWidth = 240;
@@ -30,7 +31,6 @@ const AppBar = styled(MuiAppBar, {
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
-    
     '& .MuiDrawer-paper': {
       position: 'relative',
       whiteSpace: 'nowrap',
@@ -57,17 +57,30 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-const defaultTheme = createTheme();
-
 export default function Dashboard() {
   const [open, setOpen] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   const toggleDrawer = () => {
     setOpen(!open);
   };
 
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  const theme = useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode: darkMode ? 'dark' : 'light',
+        },
+      }),
+    [darkMode]
+  );
+
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position="absolute" open={open}>
@@ -97,6 +110,9 @@ export default function Dashboard() {
             >
               Dashboard
             </Typography>
+            <IconButton color="inherit" onClick={toggleDarkMode}>
+              {darkMode ? <Brightness7 /> : <Brightness4 />}
+            </IconButton>
             <IconButton color="inherit">
               <AccountCircle />
             </IconButton>
@@ -118,7 +134,7 @@ export default function Dashboard() {
           </Toolbar>
 
           <Divider />
-          
+
           <List component="nav" sx={{ flexGrow: 1 }}>
             <MainListItems /> {/* Correct way to render the component basta mao ning sa Navlist*/}
             <Divider sx={{ my: 1 }} />
@@ -137,7 +153,7 @@ export default function Dashboard() {
             overflow: 'auto',
           }}
         >
-          <Toolbar />  
+          <Toolbar />
           <Container maxWidth="false" sx={{ mt: 4, mb: 4 }}>
             <Grid container>
               <Grid item xs={12}>
