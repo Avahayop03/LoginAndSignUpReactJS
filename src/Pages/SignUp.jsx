@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Box, TextField, Button, Typography, Checkbox, Link, FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { Container, Box, TextField, Button, Typography, Checkbox, Link, FormControl, InputLabel, Select, MenuItem, Grid } from '@mui/material';
 import supabase from '../Services/Supabase';
 
 const SignUp = () => {
@@ -54,25 +54,35 @@ const SignUp = () => {
     return (
         <Container maxWidth="xs" className="formContainer">
             <Box component="form" noValidate autoComplete="off" onSubmit={handleSubmit}>
-                <Typography variant="h4" component="h1" gutterBottom>Registration Form</Typography>
-                <TextField
-                    fullWidth
-                    margin="normal"
-                    required
-                    label="First Name"
-                    variant="outlined"
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
-                <TextField
-                    fullWidth
-                    margin="normal"
-                    required
-                    label="Last Name"
-                    variant="outlined"
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
+                <Typography variant="h6" component="h1" gutterBottom>Registration Form</Typography>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            fullWidth
+                            margin="normal"
+                            required
+                            label="First Name"
+                            variant="outlined"
+                            value={firstName}
+                            onChange={(e) => setFirstName(e.target.value)}
+                            InputProps={{ style: { fontSize: 14 } }} // Adjust the font size of the input
+                            InputLabelProps={{ style: { fontSize: 14 } }} // Adjust the font size of the label
+                        />
+                    </Grid>
+                    <Grid item xs={12} sm={6}>
+                        <TextField
+                            fullWidth
+                            margin="normal"
+                            required
+                            label="Last Name"
+                            variant="outlined"
+                            value={lastName}
+                            onChange={(e) => setLastName(e.target.value)}
+                            InputProps={{ style: { fontSize: 14 } }} // Adjust the font size of the input
+                            InputLabelProps={{ style: { fontSize: 14 } }} // Adjust the font size of the label
+                        />
+                    </Grid>
+                </Grid>
                 <TextField
                     fullWidth
                     margin="normal"
@@ -81,6 +91,8 @@ const SignUp = () => {
                     variant="outlined"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
+                    InputProps={{ style: { fontSize: 14 } }} // Adjust the font size of the input
+                    InputLabelProps={{ style: { fontSize: 14 } }} // Adjust the font size of the label
                 />
                 <TextField
                     fullWidth
@@ -91,6 +103,9 @@ const SignUp = () => {
                     variant="outlined"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                
+                    InputProps={{ style: { fontSize: 14 } }} // Adjust the font size of the input
+                    InputLabelProps={{ style: { fontSize: 14 } }} // Adjust the font size of the label
                 />
                 <TextField
                     fullWidth
@@ -101,18 +116,21 @@ const SignUp = () => {
                     variant="outlined"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    InputProps={{ style: { fontSize: 14 } }} // Adjust the font size of the input
+                    InputLabelProps={{ style: { fontSize: 14 } }} // Adjust the font size of the label
                 />
                 <FormControl fullWidth margin="normal">
-                    <InputLabel>Position</InputLabel>
+                    <InputLabel style={{ fontSize: 14 }}>Position</InputLabel>
                     <Select
                         value={position}
                         onChange={(e) => setPosition(e.target.value)}
                         label="Position"
+                        style={{ fontSize: 14 }}
                     >
-                        <MenuItem value="charge_nurse">Charge Nurse</MenuItem>
-                        <MenuItem value="personnel_officer">Personnel Officer</MenuItem>
-                        <MenuItem value="medical_director">Medical Director</MenuItem>
-                        <MenuItem value="other">Other</MenuItem>
+                        <MenuItem value="charge_nurse" style={{ fontSize: 14 }}>Charge Nurse</MenuItem>
+                        <MenuItem value="personnel_officer" style={{ fontSize: 14 }}>Personnel Officer</MenuItem>
+                        <MenuItem value="medical_director" style={{ fontSize: 14 }}>Medical Director</MenuItem>
+                        <MenuItem value="other" style={{ fontSize: 14 }}>Other</MenuItem>
                     </Select>
                 </FormControl>
                 {position === 'other' && (
@@ -124,15 +142,22 @@ const SignUp = () => {
                         variant="outlined"
                         value={customPosition}
                         onChange={(e) => setCustomPosition(e.target.value)}
+                        InputProps={{ style: { fontSize: 14 } }} // Adjust the font size of the input
+                        InputLabelProps={{ style: { fontSize: 14 } }} // Adjust the font size of the label
                     />
                 )}
-                <Box display="flex" alignItems="center" marginTop={2}>
-                    <Checkbox checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
-                    <Typography>I agree to the terms and conditions</Typography>
-                </Box>
-                <Button fullWidth variant="contained" color="primary" type="submit" sx={{ mt: 2, backgroundColor: '#eb3d94', '&:hover': { backgroundColor: '#f04fc8', }, }}>Register</Button>
+              
+                <Button fullWidth variant="contained" color="primary" type="submit"
+                  sx={{
+                    mt: 2,
+                    mb: 2,
+                    height: 50, // increase the height  
+                    backgroundColor: '#0288d1',
+                    fontSize: 'h6   ',
+                    '&:hover': { backgroundColor: '#01579b' },
+                  }}>Register</Button>
                 <Typography variant="body2" align="center" sx={{ mt: 2 }}>
-                    Already have an account?
+                Already have an account?
                     <Link href="/Login" underline="none"> Login</Link>
                 </Typography>
             </Box>

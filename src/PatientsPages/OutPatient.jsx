@@ -25,7 +25,7 @@ export default function OutPatient() {
           }}
         />
     </Box>
-    <Divider sx={{ mb: 10 }} />
+    <Divider sx={{ mb: 2}} />
                     <Table>
                       <TableHead>
                         <TableRow>

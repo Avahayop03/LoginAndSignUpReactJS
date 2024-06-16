@@ -2,9 +2,15 @@ import React, { useState, useMemo } from 'react';
 import {
   AppBar as MuiAppBar, Box, Container, CssBaseline, Divider,
   Drawer as MuiDrawer, Grid, IconButton, List, styled, ThemeProvider,
+<<<<<<< HEAD
   Toolbar, Typography, createTheme
 } from '@mui/material';
 import { AccountCircle, ChevronLeft as ChevronLeftIcon, Menu as MenuIcon, Brightness4, Brightness7 } from '@mui/icons-material';
+=======
+  Toolbar, createTheme} from '@mui/material';
+import { AccountCircle, ChevronLeft as ChevronLeftIcon,
+   Menu as MenuIcon, Brightness4, Brightness7 } from '@mui/icons-material';
+>>>>>>> a3110c38df82852ba54f8c41ac60c3e6f09cc2c1
 import { Outlet } from 'react-router-dom';
 import MainListItems from '../Components/NavList';
 import Copyright from '../Components/Copyright';
@@ -76,7 +82,11 @@ export default function Dashboard() {
           mode: darkMode ? 'dark' : 'light',
         },
       }),
+<<<<<<< HEAD
     [darkMode]
+=======
+    [darkMode],
+>>>>>>> a3110c38df82852ba54f8c41ac60c3e6f09cc2c1
   );
 
   return (
@@ -101,6 +111,7 @@ export default function Dashboard() {
             >
               <MenuIcon />
             </IconButton>
+<<<<<<< HEAD
             <Typography
               component="h1"
               variant="h6"
@@ -111,6 +122,12 @@ export default function Dashboard() {
               Dashboard
             </Typography>
             <IconButton color="inherit" onClick={toggleDarkMode}>
+=======
+              {/* <Typography component="h1" variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
+                  Dashboard
+              </Typography> */}
+            <IconButton color="inherit" onClick={toggleDarkMode }   >
+>>>>>>> a3110c38df82852ba54f8c41ac60c3e6f09cc2c1
               {darkMode ? <Brightness7 /> : <Brightness4 />}
             </IconButton>
             <IconButton color="inherit">
@@ -136,7 +153,7 @@ export default function Dashboard() {
           <Divider />
 
           <List component="nav" sx={{ flexGrow: 1 }}>
-            <MainListItems /> {/* Correct way to render the component basta mao ning sa Navlist*/}
+            <MainListItems /> {/*  basta mao ning sa Navlist*/}
             <Divider sx={{ my: 1 }} />
           </List>
         </Drawer>

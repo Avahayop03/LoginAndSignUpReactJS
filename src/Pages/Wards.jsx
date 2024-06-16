@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Container, Grid, Paper, Typography, TextField, Box, 
-        InputAdornment, MenuItem, Select, FormControl, InputLabel } from '@mui/material';
+import { Container, Grid, Paper, TextField, 
+        InputAdornment, MenuItem, Select, FormControl, InputLabel,
+        Table, TableContainer, TableHead, TableBody, TableRow, TableCell, 
+        Typography, Divider, Box, } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 export default function Wards() {
@@ -49,8 +51,42 @@ export default function Wards() {
                 }}
               />
             </Box>
-          <Paper sx={{ p: 20 }}>
-            <Typography>CHUCHU</Typography>
+          <Paper sx={{ p: 10 }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+      <Typography component="h6" variant="h5" color="inherit" sx={{ flexGrow: 1 , mb: -10}}>
+        Available Beds
+        <Divider  sx={{ mb: 10 }} />
+
+      </Typography>
+     
+    </Box>
+    
+                    <Table >
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>Ward Number</TableCell>
+                          <TableCell>Ward Name</TableCell>
+                          <TableCell>Bed Number</TableCell>
+                          <TableCell>Action</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell>Row 1, Cell 1</TableCell>
+                          <TableCell>Row 1, Cell 1</TableCell>
+                          <TableCell>Row 1, Cell 2</TableCell>
+                          <TableCell>Row 1, Cell 3</TableCell>
+                        </TableRow>
+                        <TableRow>
+                          <TableCell>Row 2, Cell 1</TableCell>
+                          <TableCell>Row 2, Cell 2</TableCell>
+                          <TableCell>Row 2, Cell 2</TableCell>
+
+                          <TableCell>Row 2, Cell 3</TableCell>
+                        </TableRow>
+                        {/* Add more rows as needed */}
+                      </TableBody>
+                    </Table>
           </Paper>
         </Grid>
       </Grid>

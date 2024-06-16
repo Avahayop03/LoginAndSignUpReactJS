@@ -1,7 +1,24 @@
 import * as React from 'react';
+<<<<<<< HEAD
 import { useState } from 'react';
 import { Grid, Container, Paper, Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Typography, Box, Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+=======
+<<<<<<< HEAD
+import { Grid, Container, Paper, Table, TableContainer, TableHead, 
+      TableBody, TableRow, TableCell, Typography, Toolbar, Box, CssBaseline,
+    Button, Divider } from '@mui/material';
+=======
+import { Grid, Container, Paper, Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Typography, Box, Button } from '@mui/material';
+>>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
+>>>>>>> a3110c38df82852ba54f8c41ac60c3e6f09cc2c1
 import { Link } from 'react-router-dom';
+import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import HotelIcon from '@mui/icons-material/Hotel';
+
+const verticalLine = {
+  border: '1px solid rgba(224, 224, 224, 1)'
+};
 
 export default function Main() {
   const [staff, setStaff] = useState([
@@ -37,6 +54,137 @@ export default function Main() {
   };
 
   return (
+<<<<<<< HEAD
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <Container maxWidth="false" sx={{ mt: -5 }}>
+        <Toolbar
+          sx={{
+            display: 'flex',
+            justifyContent: 'flex-end',
+            pr: '24px',
+          }}
+        ></Toolbar>
+        <Grid container spacing={5} justifyContent="flex-start" alignItems="center">
+          <Grid item xs={12}>
+            <Grid container spacing={2} justifyContent="space-between" alignItems="center" >
+              <Grid item xs={5}>
+                <Link to="/dashboard/Patient" style={{ textDecoration: 'none' }}>
+                  <Paper
+                    sx={{
+                      p: 5,
+                      backgroundColor: '#007bff',
+                      '&:hover': { backgroundColor: '#0056b3' },
+                      borderRadius: '5px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                    variant="contained"
+                  >
+                    <LocalHospitalIcon style={{ fontSize: 40, color: 'white', marginRight: 10 }} />
+                    <Typography variant="h6" color="white">
+                      Patient
+                    </Typography>
+                  </Paper>
+                </Link>
+              </Grid>
+
+              <Grid item xs={3}>
+                <Link to="/dashboard/Appointment" style={{ textDecoration: 'none' }}>
+                  <Paper
+                    sx={{
+                      p: 5,
+                      backgroundColor: '#388e3c',
+                      '&:hover': { backgroundColor: '#194d33' },
+                      borderRadius: '5px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                    variant="contained"
+                  >
+                    <EventNoteIcon style={{ fontSize: 40, color: 'white', marginRight: 10 }} />
+                    <Typography variant="h6" color="white">
+                      Appointment
+                    </Typography>
+                  </Paper>
+                </Link>
+              </Grid>
+
+              <Grid item xs={3}>
+                <Link to="/dashboard/Wards" style={{ textDecoration: 'none' }}>
+                  <Paper
+                    sx={{
+                      p: 5,
+                      backgroundColor: '#d32f2f',
+                      '&:hover': { backgroundColor: '#b71c1c' },
+                      borderRadius: '5px',
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                    variant="contained"
+                  >
+                    <HotelIcon style={{ fontSize: 40, color: 'white', marginRight: 10 }} />
+                    <Typography variant="h6" color="white">
+                      Wards
+                    </Typography>
+                  </Paper>
+                </Link>
+              </Grid>
+
+              <Grid item xs={12}>
+                <Paper elevation={3} sx={{ p: 8 }}>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
+                    <Typography component="h6" variant="h5" color="inherit">
+                      Staff
+                    </Typography>
+                    <Button variant="contained" color="primary" sx={{ ml: 'auto' }}>
+                      Staff Details
+                    </Button>
+                  </Box>
+
+                  <Divider sx={{ mb: 2 }} />
+
+                  <TableContainer>
+                    <Table>
+                      <TableHead>
+                        <TableRow>
+                          <TableCell sx={verticalLine}>Staff Number</TableCell>
+                          <TableCell sx={verticalLine}>Staff Name</TableCell>
+                          <TableCell sx={verticalLine}>Position</TableCell>
+                          <TableCell sx={verticalLine}><Typography sx={{ textAlign: 'center', fontSize: '14px' }}>Action</Typography></TableCell>
+                        </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        <TableRow>
+                          <TableCell sx={verticalLine}>Row 1, Cell 1</TableCell>
+                          <TableCell sx={verticalLine}>Row 1, Cell 2</TableCell>
+                          <TableCell sx={verticalLine}>Row 1, Cell 3</TableCell>
+                          <TableCell sx={verticalLine}>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                              <Button variant="contained" color="primary" sx={{ mr: 1 }}>
+                                Add
+                              </Button>
+                              <Button variant="contained" color="secondary" sx={{ mr: 1 }}>
+                                Update
+                              </Button>
+                              <Button variant="contained" color="error">
+                                Delete
+                              </Button>
+                            </Box>
+                          </TableCell>
+                        </TableRow>
+                        {/* Add more rows as needed */}
+                      </TableBody>
+                    </Table>
+                  </TableContainer>
+                </Paper>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Container>
+    </Box>
+=======
     <Container display="flex" sx={{ mt: -5, mb: 2 }}>
       <Grid container spacing={5} justifyContent="space-between" alignItems="center">
         <Grid item xs={5}>
@@ -174,5 +322,6 @@ export default function Main() {
         </DialogActions>
       </Dialog>
     </Container>
+>>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
   );
 }
