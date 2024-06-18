@@ -14,19 +14,14 @@ import Appointment from "../Pages/Appointment";
 import OutPatient from "../PatientsPages/OutPatient";
 import WaitingLists from "../PatientsPages/WaitingLists";
 import CurrentInPatient from "../PatientsPages/CurrentInPatient";
-<<<<<<< HEAD
 import PrivateRoute from '../Components/PrivateRoute';
 import PatientLists from "../PatientsPages/PatientLists";
 import DischargePatient from "../PatientsPages/DischargePatient";
 import MainInPatient from "../PatientsPages/MainInPatient";
-=======
 import StaffAllocation from "../Pages/StaffAllocation";
-<<<<<<< HEAD
 import LocalDoctor from "../Pages/LocalDoctor"; // Adjust the import path as per your file structure
 import HomePage from "../Pages/HomePage"; // Add this import
-=======
->>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
->>>>>>> a3110c38df82852ba54f8c41ac60c3e6f09cc2c1
+
 
 const routes = [
     {
@@ -55,13 +50,14 @@ const routes = [
             },
             {
                 path: "patientMed",
-<<<<<<< HEAD
+
                 element: <PatientMedication />
             },
             {
                 path: "staffAlloc",
                 element: <StaffAllocation />
-=======
+            },
+            {
                 element: <PatientMedication />,
                 children: [
                     {
@@ -79,7 +75,7 @@ const routes = [
                         element: <SavePageMed /> // Updated component name if this is the correct component
                     }
                 ]
->>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
+
             },
             {
                 path: "wardReq",
@@ -103,16 +99,12 @@ const routes = [
                 path: "appointment",
                 element: <Appointment />
             },
-<<<<<<< HEAD
-           
-=======
->>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
+
             {
                 path: "patient",
                 element: <Patient />,
                 children: [
                     {
-<<<<<<< HEAD
                         index:true,
                         element:<PatientLists/>
                     },
@@ -142,18 +134,6 @@ const routes = [
                                 element:<DischargePatient/>
                             }
                         ]
-=======
-                        path: "outPatient",
-                        element: <OutPatient />
-                    },
-                    {
-                        path: "waitingLists",
-                        element: <WaitingLists />
-                    },
-                    {
-                        path: "currentInPatient",
-                        element: <CurrentInPatient />
->>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
                     }
                 ]
             },

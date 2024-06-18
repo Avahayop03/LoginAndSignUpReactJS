@@ -87,15 +87,8 @@ export default function Login() {
                     sx={{
                         mt: 2,
                         mb: 2,
-<<<<<<< HEAD
                         backgroundColor: '#blue',
                         '&:hover': { backgroundColor: 'darkblue' },
-=======
-                        height: 50, // increase the height
-                        fontSize: 'h6', // increase the font size
-                        backgroundColor: '#0288d1',
-                        '&:hover': { backgroundColor: '#01579b' },
->>>>>>> a3110c38df82852ba54f8c41ac60c3e6f09cc2c1
                     }}
                 >
                     Login

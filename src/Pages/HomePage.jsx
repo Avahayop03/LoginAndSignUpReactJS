@@ -1,29 +1,36 @@
 import React, { useRef } from 'react';
-import { AppBar, Toolbar, Button, Container, Box, Typography } from '@mui/material';
+import { AppBar, Toolbar, Button, Container, Box, Typography, Grid, Paper } from '@mui/material';
 import { Link } from 'react-router-dom';
-import hospitalImage from '../Pages/wow.png';  
-import teamImage from '../Pages/Avah Ayop.png';    
+import AvahImage from '../Pages/avah.png';
+import MarrielleImage from '../Pages/maryel.png';
+import MarkImage from '../Pages/mark.png';
+import backgroundImage from '../Pages/bgbg.jpg'; // Import the background image
 
 const Home = () => {
   const aboutUsRef = useRef(null);
-  const contactUsRef = useRef(null);
   const teamRef = useRef(null);
-  const loginRef = useRef(null);
+  const loginRef = useRef(null); // Define loginRef
 
   const handleScroll = (ref) => {
     ref.current.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <>
+    <Box
+      sx={{
+        backgroundImage: `url(${backgroundImage})`, // Set the background image
+        backgroundSize: 'cover',
+        minHeight: '100vh',
+      }}
+    >
       <AppBar position="static">
         <Toolbar>
           <Box sx={{ flexGrow: 1, display: 'flex', justifyContent: 'center' }}>
-            <Button color="inherit" onClick={() => handleScroll(loginRef)}>Login</Button>
-            <Button color="inherit" onClick={() => handleScroll(loginRef)}>Sign-Up</Button>
+            {/* Use Link component to navigate to Login and SignUp */}
+            <Button color="inherit" component={Link} to="/login">Login</Button>
+            <Button color="inherit" component={Link} to="/signup">Sign-Up</Button>
             <Button color="inherit" onClick={() => handleScroll(aboutUsRef)}>About Us</Button>
             <Button color="inherit" onClick={() => handleScroll(teamRef)}>Team</Button>
-            <Button color="inherit" onClick={() => handleScroll(contactUsRef)}>Contact Us</Button>
           </Box>
         </Toolbar>
       </AppBar>
@@ -34,35 +41,105 @@ const Home = () => {
           alignItems: 'center',
           marginTop: 2,
         }}
-      >
-        <Box
-          component="img"
-          sx={{
-            height: 400,
-            width: '50%',
-            maxWidth: { xs: 300, md: 600 },
-          }}
-          alt="Hospital Image"
-          src={hospitalImage}
-        />
-      </Box>
+      ></Box>
 
-      <Container maxWidth="sm" style={{ height: '10vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-        <Typography variant="h5" align="center" gutterBottom>
+      <Container maxWidth="sm" sx={{ height: '50vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <Typography variant="h3" sx={{ whiteSpace: 'nowrap', fontFamily: 'Poppins', mb: 1 }} >
           Welcome to Wellmeadows Hospital
         </Typography>
-        <Typography variant="body1" align="center">
-          Where we can assist your healthcare.
+        <Typography variant="body1" align="center" sx={{ fontFamily: 'Poppins, sans-serif' }}>
+          Discover excellence in healthcare at Wellmeadows Hospital, where we blend compassionate patient care with innovative medical solutions. Our dedicated team strives to ensure your well-being every step of the way.
         </Typography>
       </Container>
+
+      <Container ref={loginRef} maxWidth="sm" style={{ height: '40vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      </Container>
+
+      <Container ref={teamRef}>
+          <Typography variant="h5" align="center" gutterBottom  sx={{fontFamily: 'Poppins, sans-serif'}}>
+            OUR TEAM:
+          </Typography>
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={4} align="center">
+              <Paper elevation={3} style={{ padding: 10, borderRadius: '50%', overflow: 'hidden' }}>
+                <Box
+                  sx={{
+                    transition: 'transform 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                    },
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={AvahImage}
+                    alt="Avah Ayop"
+                    sx={{
+                      width: '80%',
+                      height: 'auto',
+                    }}
+                  />
+                </Box>
+              </Paper>
+              <Typography variant="h6" align="center" sx={{fontFamily: 'Poppins, sans-serif'}}>Avah Ayop (Team Leader)</Typography>
+            </Grid>
+            <Grid item xs={12} sm={4} align="center">
+              <Paper elevation={3} style={{ padding: 10, borderRadius: '50%', overflow: 'hidden' }}>
+                <Box
+                  sx={{
+                    transition: 'transform 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                    },
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={MarrielleImage}
+                    alt="Marrielle Anne Sumunod"
+                    sx={{
+                      width: '80%',
+                      height: 'auto',
+                    }}
+                  />
+                </Box>
+              </Paper>
+              <Typography variant="h6" align="center" sx={{fontFamily: 'Poppins, sans-serif'}}>Marrielle Anne Sumunod</Typography>
+            </Grid>
+            <Grid item xs={12} sm={4} align="center">
+              <Paper elevation={3} style={{ padding: 10, borderRadius: '50%', overflow: 'hidden' }}>
+                <Box
+                  sx={{
+                    transition: 'transform 0.3s ease-in-out',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                    },
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={MarkImage}
+                    alt="Mark Rey Allanic"
+                    sx={{
+                      width: '80%',
+                      height: 'auto',
+                    }}
+                  />
+                </Box>
+              </Paper>
+              <Typography variant="h6" align="center" sx={{fontFamily: 'Poppins, sans-serif'}}>Mark Rey Allanic</Typography>
+            </Grid>
+          </Grid>
+      </Container>
+
       <Container ref={aboutUsRef} maxWidth="sm" style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography variant="h4" align="center" gutterBottom sx={{fontFamily: 'Poppins, sans-serif'}}>
           About us:
         </Typography>
-        <Typography variant="body1" align="center">
+        <Typography variant="body1" align="center" sx={{fontFamily: 'Poppins, sans-serif'}}>
           Welcome to Wellmeadows Hospital
         </Typography>
-        <Typography variant="body1" align="center">
+        <Typography variant="body1" align="center" sx={{fontFamily: 'Poppins, sans-serif'}}>
           Wellmeadows Hospital has been a cornerstone
           of healthcare in our community for over 50 years. 
           Our mission is to provide exceptional medical care with compassion, 
@@ -71,41 +148,7 @@ const Home = () => {
           emotional, and spiritual needs are met.
         </Typography>
       </Container>
-      <Container ref={contactUsRef} maxWidth="sm" style={{ height: '40vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          Contact us at:
-        </Typography>
-        <Typography variant="body1" align="center">
-            09-xxx-xxx-xxx
-        </Typography>
-      </Container>
-      <Container ref={teamRef} maxWidth="sm" style={{ height: '40vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          Our Team:
-        </Typography>
-        <Box
-          component="img"
-          sx={{
-            height: 800,
-            width: '1200%',
-            maxWidth: { xs: 300, md: 600 },
-          }}
-          alt="Team Image"
-          src={teamImage}
-        />
-      </Container>
-      <Container ref={loginRef} maxWidth="sm" style={{ height: '40vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-        <Typography variant="h4" align="center" gutterBottom>
-          Login or Sign-Up?
-        </Typography>
-        <Button component={Link} to="/login" variant="contained" color="primary" sx={{ mt: 2 }}>
-          Login
-        </Button>
-        <Button component={Link} to="/signup" variant="contained" color="secondary" sx={{ mt: 2 }}>
-          Sign-Up
-        </Button>
-      </Container>
-    </>
+    </Box>
   );
 };
 

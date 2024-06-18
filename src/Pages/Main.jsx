@@ -1,16 +1,28 @@
 import * as React from 'react';
-<<<<<<< HEAD
 import { useState } from 'react';
-import { Grid, Container, Paper, Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Typography, Box, Button, TextField, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
-=======
-<<<<<<< HEAD
-import { Grid, Container, Paper, Table, TableContainer, TableHead, 
-      TableBody, TableRow, TableCell, Typography, Toolbar, Box, CssBaseline,
-    Button, Divider } from '@mui/material';
-=======
-import { Grid, Container, Paper, Table, TableContainer, TableHead, TableBody, TableRow, TableCell, Typography, Box, Button } from '@mui/material';
->>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
->>>>>>> a3110c38df82852ba54f8c41ac60c3e6f09cc2c1
+import {
+  Grid,
+  Container,
+  Paper,
+  Table,
+  TableContainer,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Typography,
+  Box,
+  Button,
+  TextField,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle,
+  Toolbar,
+  CssBaseline,
+  Divider
+} from '@mui/material';
 import { Link } from 'react-router-dom';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import EventNoteIcon from '@mui/icons-material/EventNote';
@@ -54,7 +66,6 @@ export default function Main() {
   };
 
   return (
-<<<<<<< HEAD
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <Container maxWidth="false" sx={{ mt: -5 }}>
@@ -67,7 +78,7 @@ export default function Main() {
         ></Toolbar>
         <Grid container spacing={5} justifyContent="flex-start" alignItems="center">
           <Grid item xs={12}>
-            <Grid container spacing={2} justifyContent="space-between" alignItems="center" >
+            <Grid container spacing={2} justifyContent="space-between" alignItems="center">
               <Grid item xs={5}>
                 <Link to="/dashboard/Patient" style={{ textDecoration: 'none' }}>
                   <Paper
@@ -137,8 +148,8 @@ export default function Main() {
                     <Typography component="h6" variant="h5" color="inherit">
                       Staff
                     </Typography>
-                    <Button variant="contained" color="primary" sx={{ ml: 'auto' }}>
-                      Staff Details
+                    <Button variant="contained" color="primary" sx={{ ml: 'auto' }} onClick={handleOpen}>
+                      Add Staff
                     </Button>
                   </Box>
 
@@ -155,25 +166,23 @@ export default function Main() {
                         </TableRow>
                       </TableHead>
                       <TableBody>
-                        <TableRow>
-                          <TableCell sx={verticalLine}>Row 1, Cell 1</TableCell>
-                          <TableCell sx={verticalLine}>Row 1, Cell 2</TableCell>
-                          <TableCell sx={verticalLine}>Row 1, Cell 3</TableCell>
-                          <TableCell sx={verticalLine}>
-                            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                              <Button variant="contained" color="primary" sx={{ mr: 1 }}>
-                                Add
-                              </Button>
-                              <Button variant="contained" color="secondary" sx={{ mr: 1 }}>
-                                Update
-                              </Button>
-                              <Button variant="contained" color="error">
-                                Delete
-                              </Button>
-                            </Box>
-                          </TableCell>
-                        </TableRow>
-                        {/* Add more rows as needed */}
+                        {staff.map((staffMember, index) => (
+                          <TableRow key={staffMember.id}>
+                            <TableCell sx={verticalLine}>{index + 1}</TableCell>
+                            <TableCell sx={verticalLine}>{staffMember.name}</TableCell>
+                            <TableCell sx={verticalLine}>{staffMember.position}</TableCell>
+                            <TableCell sx={verticalLine}>
+                              <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                <Button variant="contained" color="primary" sx={{ mr: 1 }} onClick={() => handleEditStaff(staffMember)}>
+                                  Edit
+                                </Button>
+                                <Button variant="contained" color="error" onClick={() => handleDeleteStaff(staffMember.id)}>
+                                  Delete
+                                </Button>
+                              </Box>
+                            </TableCell>
+                          </TableRow>
+                        ))}
                       </TableBody>
                     </Table>
                   </TableContainer>
@@ -183,118 +192,12 @@ export default function Main() {
           </Grid>
         </Grid>
       </Container>
-    </Box>
-=======
-    <Container display="flex" sx={{ mt: -5, mb: 2 }}>
-      <Grid container spacing={5} justifyContent="space-between" alignItems="center">
-        <Grid item xs={5}>
-          <Link to="/dashboard/Patient" style={{ textDecoration: 'none' }}>
-            <Paper
-              sx={{
-                p: 5,
-                backgroundColor: '#007bff',
-                '&:hover': { backgroundColor: '#0056b3' },
-                borderRadius: '5px',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-              variant="contained"
-            >
-              <Typography variant="h6" color="white">Patient</Typography>
-            </Paper>
-          </Link>
-        </Grid>
-
-        <Grid item xs={3}>
-          <Link to="/dashboard/Appointment" style={{ textDecoration: 'none' }}>
-            <Paper
-              sx={{
-                p: 5,
-                backgroundColor: '#388e3c',
-                '&:hover': { backgroundColor: '#194d33' },
-                borderRadius: '5px',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-              variant="contained"
-            >
-              <Typography variant="h6" color="white">Appointment</Typography>
-            </Paper>
-          </Link>
-        </Grid>
-
-        <Grid item xs={3}>
-          <Link to="/dashboard/Wards" style={{ textDecoration: 'none' }}>
-            <Paper
-              sx={{
-                p: 5,
-                backgroundColor: '#d32f2f',
-                '&:hover': { backgroundColor: '#b71c1c' },
-                borderRadius: '5px',
-                display: 'flex',
-                justifyContent: 'center',
-              }}
-              variant="contained"
-            >
-              <Typography variant="h6" color="white">Wards</Typography>
-            </Paper>
-          </Link>
-        </Grid>
-
-        <Grid item xs={12}>
-          <Paper sx={{ p: 8 }}>
-            <Typography component="h6" variant="h5" color="inherit" sx={{ mb: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative' }}>
-              <span>Staff</span>
-              <Button variant="outlined" color="success" sx={{ ml: 'auto', position: 'relative', zIndex: 1 }}>
-                Details
-              </Button>
-              <Box sx={{ width: '100%', borderBottom: '2px solid green', position: 'absolute', bottom: 0, left: 0 }} />
-            </Typography>
-
-            <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 2 }}>
-              <Button variant="contained" color="primary" sx={{ mr: 1 }} onClick={handleOpen}>
-                Add
-              </Button>
-              <Button variant="contained" color="secondary" sx={{ mr: 1 }} onClick={() => handleEditStaff(currentStaff)}>
-                Update
-              </Button>
-              <Button variant="contained" color="error" onClick={() => handleDeleteStaff(currentStaff.id)}>
-                Delete
-              </Button>
-            </Box>
-
-            <TableContainer>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell>Position</TableCell>
-                    <TableCell>Actions</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {staff.map((staff) => (
-                    <TableRow key={staff.id}>
-                      <TableCell>{staff.name}</TableCell>
-                      <TableCell>{staff.position}</TableCell>
-                      <TableCell>
-                        <Button variant="contained" color="primary" onClick={() => handleEditStaff(staff)}>Edit</Button>
-                        <Button variant="contained" color="error" onClick={() => handleDeleteStaff(staff.id)}>Delete</Button>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Paper>
-        </Grid>
-      </Grid>
 
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>{isEditing ? 'Edit Staff' : 'Add Staff'}</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Please enter the staff details.
+            {isEditing ? 'Edit the details of the staff member.' : 'Enter the details of the new staff member.'}
           </DialogContentText>
           <TextField
             autoFocus
@@ -302,7 +205,6 @@ export default function Main() {
             label="Name"
             type="text"
             fullWidth
-            variant="standard"
             value={currentStaff.name}
             onChange={(e) => setCurrentStaff({ ...currentStaff, name: e.target.value })}
           />
@@ -311,17 +213,19 @@ export default function Main() {
             label="Position"
             type="text"
             fullWidth
-            variant="standard"
             value={currentStaff.position}
             onChange={(e) => setCurrentStaff({ ...currentStaff, position: e.target.value })}
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleAddUpdateStaff}>{isEditing ? 'Update' : 'Add'}</Button>
+          <Button onClick={handleClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleAddUpdateStaff} color="primary">
+            {isEditing ? 'Update' : 'Add'}
+          </Button>
         </DialogActions>
       </Dialog>
-    </Container>
->>>>>>> 8b7c4354149b6748b68eaf87e8a06901cb4c38a4
+    </Box>
   );
 }
